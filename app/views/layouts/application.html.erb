@@ -12,8 +12,35 @@
   </head>
 
   <body>
-
-    <%= yield %>
+    <nav class="top-bar" data-topbar>
+      <ul class="title-area">
+        <li class="name">
+          <h1><%= link_to 'Webcomix', root_path %></h1>
+        </li>
+        <li class="toggle-topbar menu-icon">
+          <%= link_to 'Menu', '#' %>
+        </li>
+      </ul>
+      <section class="top-bar-section">
+        <ul class="left">
+          <li class="divider"></li>
+          <li class="has-dropdown">
+            <a href="#" data-dropdown="drop2">Add New</a>
+            <div id="drop2" data-dropdown-content class="f-dropdown content">
+                <%= simple_form_for (@link) do |f| %>
+                  <%= f.input :name %>
+                  <%= f.input :url %>
+                  <%= f.button :submit %>
+                <% end %>
+            </div>
+          </li>
+          <li class="divider"></li>
+        </ul>
+      </section>
+    </nav>
+    <div class="row">
+      <%= yield %>
+    </div>
     <%= javascript_include_tag "application" %>
   </body>
 </html>
